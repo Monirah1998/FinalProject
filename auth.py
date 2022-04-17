@@ -1,12 +1,13 @@
 from jose import jwt
 import json
+import os
 from functools import wraps
 from flask import Flask, request, abort, make_response, jsonify
 from urllib.request import urlopen
 
-AUTH0_DOMAIN = 'dev-i2ernxx1.us.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'casting-agency'
+AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
+ALGORITHMS = os.environ.get('ALGORITHMS')
+API_AUDIENCE = os.environ.get('API_AUDIENCE')
 
 def get_token_auth_header():
     """Obtains the Access Token from the Authorization Header
